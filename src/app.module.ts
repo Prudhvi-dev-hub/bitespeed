@@ -11,7 +11,7 @@ config(); // Load environment variables from .env file
      TypeOrmModule.forRoot({
       type: process.env.TYPE as 'postgres',
       host: process.env.HOST_NAME,
-      port: process.env.PORT? parseInt(process.env.PORT) : 5432,
+      port: process.env.DB_PORT? parseInt(process.env.DB_PORT) : 5432,
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
