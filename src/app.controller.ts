@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, ValidationPipe } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreatePurchaseOrderRequestDto } from './dtos/create-purchase-order.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -16,5 +16,10 @@ export class AppController {
   @Get()
   async findIdentities() {
     return await this.appService.findAll();
+  }
+
+  @Delete('/flush-all')
+  async deleteAll() {
+    return await this.appService.deleteAll();
   }
 }

@@ -41,9 +41,9 @@ export class Contact{
     })
     updatedAt: Date;
 
-    @CreateDateColumn({
-        type: 'timestamptz',
-        nullable: true        
+    @CreateDateColumn({        
+        nullable: true,  
+        default: null,      
     })
     deletedAt: Date;
 }
