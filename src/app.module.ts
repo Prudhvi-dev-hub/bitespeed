@@ -3,17 +3,18 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Contact } from './models/contact.entity';
-import { Repository } from 'typeorm';
+import { config } from 'dotenv';
+config(); // Load environment variables from .env file
 
 @Module({
   imports: [
      TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'dpg-d1d0tg7diees73cbudk0-a.oregon-postgres.render.com',
-      port: 5432,
-      username: 'prudhvi',
-      password: 'Pyt5t1iLRzbnojSVYAbkr9cWb6gdaxBB',
-      database: 'bitespeed_dgss',
+      type: process.env.TYPE as 'postgres',
+      host: process.env.HOST_NAME,
+      port: process.env.PORT? parseInt(process.env.PORT) : 5432,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE,
       entities: [Contact],
       synchronize: true,
       ssl: true,                     // Render requires SSL
